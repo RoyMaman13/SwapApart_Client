@@ -56,6 +56,7 @@ export default function SignIn() {
      * navigate to "/signup"
      */
     const handleSignUp = (event) => { navigate('/signup') };
+    
 
     return (
         <ThemeProvider theme={theme}>
@@ -63,14 +64,7 @@ export default function SignIn() {
                 <CssBaseline />
                 <Toolbar sx={{ pr: '24px', }}>
                     <SwapHorizontalCircleIcon />
-                    <Typography
-                        component="h1"
-                        variant="h6"
-                        color="inherit"
-                        noWrap
-                        sx={{ flexGrow: 1 }}
-                        padding={'5px'}
-                    >
+                    <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }} padding={'5px'}>
                         SwapApart!
                     </Typography>
                 </Toolbar>

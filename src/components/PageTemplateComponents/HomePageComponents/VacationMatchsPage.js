@@ -60,11 +60,6 @@ function VacationMatchsPage({ plan, setPlanIndex }) {
                     <FooterApartImgsCard swipePlan={swipePlan} />
                 </Grid>
             </Grid>
-            {/* <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="body1" fontWeight="bold" align="center">
-                You already have {plan.match.length} existing match on this vacation with
-            </Typography>
-        </Paper> */}
         </Container>
     ) : (
         <Container maxWidth="md" sx={{ mt: 6, mb: 4 }}>
@@ -79,11 +74,6 @@ function VacationMatchsPage({ plan, setPlanIndex }) {
                 We have no possible matches for you at the moment. Please try again later.
             </Typography>
         </Paper>
-        {/* <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="body1" fontWeight="bold" align="center">
-                You already have {plan.match.length} existing match on this vacation with
-            </Typography>
-        </Paper> */}
     </Container>
     ) 
 }    

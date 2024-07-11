@@ -9,7 +9,6 @@ import Paper from '@mui/material/Paper';
 import { useContext } from 'react';
 import UserContext from '../../../context/UserContext';
 import ApartmentImageStepper from '../HomePageComponents/ApartmentImageStepper';
-import { margin } from '@mui/system';
 
 function MainSettings({setActiveSettingsPage}) {
   const { userData } = useContext(UserContext);
@@ -64,25 +63,5 @@ function MainSettings({setActiveSettingsPage}) {
 
   )
 }
-
-
-
-
-
-                  // <Typography component="h1" variant="h4" align="center">
-                  //   <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>                               
-                  //                   <Button onClick={() => setActiveSettingsPage(2)} >
-                  //                       Watch Your Personal Details
-                  //                   </Button>                                    
-                  //               </Box>
-                  // <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>                               
-                  //                   <Button onClick={() => setActiveSettingsPage(1)} >
-                  //                       Change your Apertment details
-                  //                   </Button>                                    
-                  //               </Box>
-                  // </Typography>                 
-
-//   )
-// }
 
 export default MainSettings

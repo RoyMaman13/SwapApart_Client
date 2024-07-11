@@ -11,7 +11,7 @@ import { UserProvider } from './context/UserContext';
  */
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter>    
       <UserProvider>
         <Routes>
           {/* Route for the sign-in page */}

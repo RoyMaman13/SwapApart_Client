@@ -13,74 +13,34 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ApartmentImageStepper from '../HomePageComponents/ApartmentImageStepper';
 
-
 export default function RightSidebar({ conversation }) {
-
-  const getStartDate = () => {
-    const startDate = new Date(conversation.plan.startDate);
-    const formattedDate = startDate.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    return "Start Date: " + formattedDate;
+  const getDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' });
   };
 
-  const getEndDate = () => {
-    const endDate = new Date(conversation.plan.endDate);
-    const formattedDate = endDate.toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    return "Start Date: " + formattedDate;
-  };
+  const getInfo = (label, data) => `${label}: ${data}`;
 
-  const getCountry = () => { return "Country: " + conversation.matchedUser.apartment.country; };
-  const getRegion = () => { return "Region: " + conversation.matchedUser.apartment.region; };
-  const getCity = () => { return "City: " + conversation.matchedUser.apartment.city; };
-  const getRooms = () => { return "Rooms: " + conversation.matchedUser.apartment.rooms; };
-  const getBathrooms = () => { return "Bathrooms: " + conversation.matchedUser.apartment.bathrooms; };
-
+  const dataItems = [
+    { icon: <ArrowForwardIcon />, text: getInfo("Start Date", getDate(conversation.plan.startDate)) },
+    { icon: <ArrowBackIcon />, text: getInfo("End Date", getDate(conversation.plan.endDate)) },
+    { icon: <PublicIcon />, text: getInfo("Country", conversation.matchedUser.apartment.country) },
+    { icon: <MapIcon />, text: getInfo("Region", conversation.matchedUser.apartment.region) },
+    { icon: <LocationOnIcon />, text: getInfo("City", conversation.matchedUser.apartment.city) },
+    { icon: <HomeWorkIcon />, text: getInfo("Rooms", conversation.matchedUser.apartment.rooms) },
+    { icon: <BathtubIcon />, text: getInfo("Bathrooms", conversation.matchedUser.apartment.bathrooms) }
+  ];
 
   return (
     <Sidebar position="right">
       <ExpansionPanel open title="Match Info">
         <List>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <ArrowForwardIcon />
-            </ListItemIcon>
-            <ListItemText primary={getStartDate()} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <ArrowBackIcon />
-            </ListItemIcon>
-            <ListItemText primary={getEndDate()} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <PublicIcon />
-            </ListItemIcon>
-            <ListItemText primary={getCountry()} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <MapIcon />
-            </ListItemIcon>
-            <ListItemText primary={getRegion()} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <LocationOnIcon />
-            </ListItemIcon>
-            <ListItemText primary={getCity()} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <HomeWorkIcon />
-            </ListItemIcon>
-            <ListItemText primary={getRooms()} />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <BathtubIcon />
-            </ListItemIcon>
-            <ListItemText primary={getBathrooms()} />
-          </ListItem>
+          {dataItems.map((item, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
           <ListItem disablePadding>
             <ApartmentImageStepper images={conversation.matchedUser.apartment.pictures} />
           </ListItem>
